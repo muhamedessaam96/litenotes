@@ -18,7 +18,7 @@
                     <form action="{{ route('notes.destroy', $note) }}" method="post">
                         @method('delete')
                         @csrf
-                        <button type="submit" class="btn btn-danger ml-4" onclick="return confirm('Are you sure you wish to delete this form?')">Move to Trash</button>
+                        <button type="submit" class="btn btn-danger ml-4" onclick="return confirm('Are you sure you wish to move to to trash?')">Move to Trash</button>
                     </form>
                     @else
                     <p class="opacity-70"><strong>Deleted :</strong>{{ $note->deleted_at->diffForHumans() }}</p>
@@ -27,11 +27,13 @@
                     @csrf
                     <button type="submit" class="btn-link ">Restore Note</button>
                     </form>
-                    {{-- <form action="{{ route('notes.destroy', $note) }}" method="post">
+                    <form action="{{ route('trashed.destroy', $note) }}" method="post">
                         @method('delete')
                         @csrf
-                        <button type="submit" class="btn btn-danger ml-4" onclick="return confirm('Are you sure you wish to delete this form?')">Move to Trash</button>
-                    </form> --}}
+                        <button type="submit" class="btn btn-danger ml-4"
+                                onclick="return confirm('Are you sure you wish to delete this forever? this action can not be  undone')">Delete forever
+                        </button>
+                    </form>
                     @endif
 
                 </div>
